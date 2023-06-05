@@ -1,0 +1,19 @@
+// menu
+.menu-list {
+    width: 220px;
+    flex-direction: column;
+    .menu-item {
+        margin-left: 0;
+        display: flex;
+        font-size: 2rem;
+        background-color: transparent;
+        color: #333;
+        font-weight: 500;
+        width: 100%;
+        padding: 4px;
+        &:hover {
+            cursor: pointer;
+            background-color: rgba(22, 24, 35, 0.03);
+        }
+    }
+}

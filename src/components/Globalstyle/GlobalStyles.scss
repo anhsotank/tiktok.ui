@@ -1,20 +1,34 @@
 @import 'normalize.css';
 
-:root{
-    --primary:#fe2c55;
-
+:root {
+    --primary: #fe2c55;
+    --black: #000000da;
+    --text-color: #333;
+    --white: #ffffff;
 }
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-html{
+html {
     font-size: 62.5%;
 }
-body{
+body {
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
+}
+
+button,
+input,
+[tabindex] {
+    border: none;
+    outline: none;
+}
+
+a[href] {
+    color: var(--text-color);
+    text-decoration: none;
 }
