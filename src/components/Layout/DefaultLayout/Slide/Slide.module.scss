@@ -1,0 +1,37 @@
+.wrapper {
+    width: 1150px;
+    height: 450px;
+    margin-top: 30px;
+}
+.slick-slider {
+    height: 400px;
+    margin-top: 20px;
+}
+.slick-slider_item {
+    height: 400px;
+}
+.slick-slider_item > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.next-arr,
+.pre-arr {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    opacity: 0.7;
+}
+.pre-arr {
+    z-index: 10;
+    color: #e3e6eb;
+    top: 50%;
+}
+.next-arr {
+    top: 50%;
+    right: 0;
+    background-color: #f0f8ff;
+    color: #e3e6eb;
+}

@@ -2,23 +2,25 @@ import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleQuestion,
-    faCircleXmark,
-    faCloudArrowDown,
     faCloudArrowUp,
+    faCoins,
     faEarthAsia,
     faEllipsisVertical,
-    faSearch,
-    faSpinner,
+    faGear,
+    faSignOut,
+    faUser,
 } from '@fortawesome/free-solid-svg-icons';
-import Tippy from '@tippyjs/react/headless';
-import { useEffect, useState } from 'react';
 
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+import config from '~/config';
 import styles from './Header.module.scss';
 import logo from '~/assets/logo/logo_new.png';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
-import Accountiem from '~/components/Accountitem';
+
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
+import Search from '../Search';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -26,6 +28,19 @@ const menu_item = [
     {
         icon: <FontAwesomeIcon icon={faEarthAsia} />,
         title: 'English',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    code: 'e',
+                    title: 'English',
+                },
+                {
+                    code: 'vn',
+                    title: 'viet nam',
+                },
+            ],
+        },
     },
     {
         icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -37,58 +52,72 @@ const menu_item = [
         title: 'keyboar',
     },
 ];
-
+const useMenu = [
+    {
+        icon: <FontAwesomeIcon icon={faUser} />,
+        title: 'View profile',
+        to: '/anh',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCoins} />,
+        title: 'Get coins',
+        to: '/coin',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faGear} />,
+        title: 'Setting',
+        to: '/setting',
+    },
+    ...menu_item,
+    {
+        icon: <FontAwesomeIcon icon={faSignOut} />,
+        title: 'Log out',
+        to: '/logout',
+    },
+];
+let currentUser = false;
 function Header() {
-    const [searchResult, setSearchResult] = useState([]);
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([]);
-        }, 0);
-    }, []);
+    //handle logic
+    const handlemunuitem = (menuitem) => {
+        console.log(menuitem);
+    };
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <img src={logo} alt="logo" />
+                    <Link to={config.routes.home}>
+                        <img src={logo} alt="logo" />
+                    </Link>
                 </div>
-                <Tippy
-                    visible={searchResult.length > 0}
-                    interactive
-                    render={(atb) => (
-                        <div className={cx('search-result')} tabIndex="-1" {...atb}>
-                            <PopperWrapper>
-                                <h3 className={cx('title-account')}></h3>
-                                <Accountiem />
-                                <Accountiem />
-                                <Accountiem />
-                                <Accountiem />
-                            </PopperWrapper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input type="text" placeholder="Search" spellCheck="false" />
-                        <button className={cx('clear')}>
-                            <FontAwesomeIcon icon={faCircleXmark} />
-                        </button>
-                        <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-                        <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faSearch} />
-                        </button>
-                    </div>
-                </Tippy>
+                <Search />
 
                 <div className={cx('action')}>
-                    <button className={cx('btn-update')}>
-                        <FontAwesomeIcon icon={faCloudArrowUp} />
-                    </button>
-                    <Button outline>Sign up</Button>
-                    <Button blue>Login</Button>
-
-                    <Menu item={menu_item}>
-                        <button className={cx('btn-more')}>
-                            <FontAwesomeIcon icon={faEllipsisVertical} />
+                    <Tippy content="upload" placement="bottom">
+                        <button className={cx('btn-update')}>
+                            <FontAwesomeIcon icon={faCloudArrowUp} />
                         </button>
+                    </Tippy>
+                    {currentUser ? (
+                        <></>
+                    ) : (
+                        <>
+                            <Button outline>Sign up</Button>
+                            <Button blue to={config.routes.login}>
+                                Login
+                            </Button>
+                        </>
+                    )}
+                    <Menu item={currentUser ? useMenu : menu_item} onChange={handlemunuitem}>
+                        {currentUser ? (
+                            <img
+                                className={cx('user-avata')}
+                                src="https://avatar-ex-swe.nixcdn.com/avatar/2022/08/23/b/8/3/d/1661244166367.jpg"
+                            />
+                        ) : (
+                            <button className={cx('btn-more')}>
+                                <FontAwesomeIcon icon={faEllipsisVertical} />
+                            </button>
+                        )}
                     </Menu>
                 </div>
             </div>

@@ -1,10 +1,12 @@
 @import 'normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@100&display=swap');
 
 :root {
     --primary: #fe2c55;
     --black: #000000da;
     --text-color: #333;
     --white: #ffffff;
+    --blue: #2daaed;
 }
 * {
     margin: 0;
@@ -15,10 +17,25 @@ html {
     font-size: 62.5%;
 }
 body {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Roboto', sans-serif;
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
+    overflow-y: overlay;
+}
+html ::-webkit-scrollbar {
+    border-radius: 0px;
+    width: 8px;
+}
+
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+html ::-webkit-scrollbar-track {
+    border-radius: 0px;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 button,
@@ -31,4 +48,36 @@ input,
 a[href] {
     color: var(--text-color);
     text-decoration: none;
+}
+
+//slick-dots
+.slick-dots button::before {
+    content: '' !important;
+    background-color: #333;
+
+    height: 10px !important;
+    width: 10px !important;
+    border-radius: 50%;
+}
+.slick-dots .slick-active button::before {
+    background-color: #00aeef;
+
+    width: 25px !important;
+    border-radius: 10px;
+
+    transition: 2s linear;
+}
+
+//custom tooltip
+body {
+    .tippy-box {
+        border-radius: 7px;
+        font-weight: 600;
+        font-size: 1.6rem;
+        line-height: 2.2rem;
+        background-color: #00afefc3;
+    }
+    .tippy-arrow {
+        color: #00afefaa;
+    }
 }

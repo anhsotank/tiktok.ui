@@ -5,10 +5,10 @@
     .menu-item {
         margin-left: 0;
         display: flex;
-        font-size: 2rem;
+        font-size: 1.7rem;
         background-color: transparent;
         color: #333;
-        font-weight: 500;
+        font-weight: 600;
         width: 100%;
         padding: 4px;
         &:hover {
@@ -16,4 +16,29 @@
             background-color: rgba(22, 24, 35, 0.03);
         }
     }
+}
+.menu-body {
+    overflow-y: auto;
+}
+//Header
+.header {
+    position: relative;
+    height: 50px;
+    margin-top: -8px;
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+.btn-back {
+    height: 50px;
+    width: 50px;
+    font-size: 3rem;
+    color: #2f80ed;
+    background-color: transparent;
+    cursor: pointer;
+}
+.header-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
