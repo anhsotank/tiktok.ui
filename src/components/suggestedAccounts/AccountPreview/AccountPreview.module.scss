@@ -1,0 +1,41 @@
+.preview {
+    padding: 20px;
+    width: 300px;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.avata {
+    height: 44px;
+    width: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.info {
+    margin-top: 12px;
+    flex: 1;
+}
+
+.check {
+    margin-left: 8px;
+    font-size: 1.2rem;
+    color: rgb(32, 213, 236);
+}
+
+.usename {
+    font-size: 1.2rem;
+}
+.name {
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1;
+}
+.analytics {
+    font-size: 1.8rem;
+}
+.value ~ .value {
+    margin-left: 12px;
+}

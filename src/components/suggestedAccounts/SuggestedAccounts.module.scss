@@ -1,0 +1,55 @@
+.wrapper {
+    border-top: 0.5px solid var(--blue);
+}
+
+.label {
+    color: var(--blue);
+    padding: 8px;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.account-item {
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    cursor: pointer;
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+}
+
+.avata {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.info {
+    margin-left: 12px;
+    flex: 1;
+}
+
+.name {
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.check {
+    margin-left: 8px;
+    font-size: 1.2rem;
+    color: rgb(32, 213, 236);
+}
+
+.usename {
+    font-size: 1.2rem;
+}
+
+.more-btn {
+    padding: 8px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fe2c55;
+}

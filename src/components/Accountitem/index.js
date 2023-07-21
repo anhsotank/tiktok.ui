@@ -4,10 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
+import { useStore } from '~/store/Provider';
+import { actions } from '~/store';
+
 const cx = classNames.bind(styles);
 function Accountiem({ data }) {
+    const [state, dispatch] = useStore();
+
     return (
-        <Link to={`/@${data.name}`} className={cx('wrapper')}>
+        <Link to={'/artist'} className={cx('wrapper')} onClick={() => dispatch(actions.setartistID(data.id))}>
             <img className={cx('avata')} src={data.images[0]?.url} alt={data.images[0]?.url} />
 
             <div className={cx('info')}>

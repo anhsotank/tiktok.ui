@@ -7,6 +7,7 @@ import {
     faEarthAsia,
     faEllipsisVertical,
     faGear,
+    faKeyboard,
     faSignOut,
     faUser,
 } from '@fortawesome/free-solid-svg-icons';
@@ -48,7 +49,7 @@ const menu_item = [
         to: '/feedback',
     },
     {
-        icon: <FontAwesomeIcon icon={faEarthAsia} />,
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
         title: 'keyboar',
     },
 ];

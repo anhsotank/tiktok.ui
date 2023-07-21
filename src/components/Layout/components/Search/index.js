@@ -8,6 +8,8 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import Accountiem from '~/components/Accountitem';
 import styles from './Search.module.scss';
 import { useDebounce } from '~/hooks';
+import { useStore } from '~/store/Provider';
+import { actions } from '~/store';
 
 const cx = classNames.bind(styles);
 
@@ -20,6 +22,7 @@ function Search() {
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
     const [loading, setloading] = useState(false);
+    const [state, dispatch] = useStore();
 
     const debounced = useDebounce(searchValue, 700);
 
@@ -35,25 +38,41 @@ function Search() {
         };
         fetch('https://accounts.spotify.com/api/token', authParameters)
             .then((re) => re.json())
-            .then((data) => setAccessToken(data.access_token));
+            .then((data) => {
+                setAccessToken(data.access_token);
+                dispatch(actions.setToken(data.access_token));
+                // console.log(data);
+            });
     }, []);
-
     async function search() {
-        var artisParameter = {
+        const artisParameter = {
             method: 'GET',
             headers: {
                 'content-Type': 'application/json',
                 Authorization: 'Bearer ' + accessToken,
             },
         };
-        var artist = await fetch('https://api.spotify.com/v1/search?q=' + debounced + '&type=artist', artisParameter)
+
+        const artist = await fetch('https://api.spotify.com/v1/search?q=' + debounced + '&type=artist', artisParameter)
             .then((reponse) => reponse.json())
             .then((data) => {
-                console.log(data.artists.items);
                 setSearchResult(data.artists.items);
+
                 setloading(false);
             })
             .catch(() => setloading(false));
+
+        // const playlist = await fetch(
+        //     'https://api.spotify.com/v1/artists/' +
+        //         searchResult[0]?.id +
+        //         '/top-tracks' +
+        //         '?include_group=top-tracks&market=US&limit=10',
+        //     artisParameter,
+        // )
+        //     .then((response) => response.json)
+        //     .then((data) => {
+        //         console.log(data);
+        //     });
     }
 
     useEffect(() => {
@@ -63,6 +82,7 @@ function Search() {
 
         setloading(true);
         search();
+
         // fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
         //     .then((res) => res.json())
         //     .then((res) => {
@@ -71,8 +91,10 @@ function Search() {
         //     })
         //     .catch(() => setloading(false));
     }, [debounced]);
+
     ////////
     const handlehideresult = (e) => {};
+
     return (
         //using a wrapper <div> or <span> tag around the reference element solves this by creating a new parentNode context. S
         <div>
@@ -98,7 +120,7 @@ function Search() {
                         ref={inputref}
                         value={searchValue}
                         type="text"
-                        placeholder="Search"
+                        placeholder="Artist"
                         spellCheck="false"
                         onChange={(e) => {
                             setSearchValue(e.target.value);

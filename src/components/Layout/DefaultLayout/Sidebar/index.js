@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Menu, { Menuitem } from './Menu';
 import config from '~/config';
 import { faHome, faUser, faVideoCamera } from '@fortawesome/free-solid-svg-icons';
+import SuggestedAccounts from '~/components/suggestedAccounts/SuggestedAccounts';
 const cx = classNames.bind(styles);
 function Sidebar() {
     const menu_item = [
@@ -31,6 +32,7 @@ function Sidebar() {
                     <Menuitem key={index} title={e.title} to={e.to} icon={e.icon} />
                 ))}
             </Menu>
+            <SuggestedAccounts label="Suggested Accounts" />
         </aside>
     );
 }
