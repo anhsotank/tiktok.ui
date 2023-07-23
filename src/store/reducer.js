@@ -2,7 +2,7 @@ import { SET_ARTIST_ID, SET_PLAYLIST_FEATURED, SET_PLAYLIST_ID, SET_TOKEN, SET_T
 
 const initState = {
     token: '',
-    artistID: '',
+    artistID: '5dfZ5uSmzR7VQK0udbAVpf',
     playlistfeatured: [],
     TrackTop: [],
     Track: [],

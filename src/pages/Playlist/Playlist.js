@@ -64,14 +64,14 @@ function Playlist() {
                     </div>
                     <div className={cx('playlist-title')}>
                         <span>Title</span>
-                        <span>Album</span>
+                        <span>Duration</span>
                         <span>Date added</span>
                         <span>
                             <FontAwesomeIcon icon={faHeart} />
                         </span>
                     </div>
                 </div>
-                {console.log(state)}
+                {console.log(Track)}
                 <ul className={cx('list-song')}>
                     {load && Track.items?.map((data) => <SongPlaylist key={data.track.id} data={data} />)}
                 </ul>

@@ -69,10 +69,8 @@
         &:hover {
             background-color: #78badb9b;
             cursor: pointer;
-            .icon-hearth {
-                display: inline-block;
-            }
-            .icon-play {
+
+            .icon {
                 display: block;
             }
         }
@@ -90,12 +88,20 @@
         border-radius: 4px;
         object-fit: cover;
     }
-    .icon-play {
+    .icon {
+        position: relative;
         margin-right: 10px;
         display: none;
         height: 25px;
         width: 25px;
         color: var(--blue);
+
+        .icon-pause,
+        .icon-play {
+            height: 25px;
+            width: 25px;
+            position: absolute;
+        }
     }
 }
 
@@ -105,9 +111,7 @@
     justify-content: space-around;
     width: 100px;
     .icon-hearth {
-        display: none;
         height: 25px;
         width: 25px;
-        color: var(--blue);
     }
 }

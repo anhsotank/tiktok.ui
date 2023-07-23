@@ -7,8 +7,12 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './SuggestedAccounts.module.scss';
 import AccountPreview from './AccountPreview/AccountPreview';
+import { useStore } from '~/store/Provider';
+import { actions } from '~/store';
 const cx = classNames.bind(styles);
-function Accountitem() {
+function Accountitem({ data }) {
+    const [state, dispatch] = useStore();
+
     return (
         <div>
             <Tippy
@@ -17,23 +21,23 @@ function Accountitem() {
                 placement="bottom"
                 render={(props) => (
                     <div tabIndex="-1" {...props}>
-                        <AccountPreview />
+                        <AccountPreview data={data} />
                     </div>
                 )}
             >
-                <Link to="./account" className={cx('account-item')}>
-                    <img
-                        className={cx('avata')}
-                        src="https://i.scdn.co/image/ab67706f000000039e541f2dfcd1e74d680f5015"
-                        alt=""
-                    />
+                <Link
+                    to="./artist"
+                    className={cx('account-item')}
+                    onClick={() => dispatch(actions.setartistID(data.id))}
+                >
+                    <img className={cx('avata')} src={data.images[0].url} alt="" />
 
                     <div className={cx('info')}>
                         <h4 className={cx('name')}>
-                            <strong>anh</strong>
+                            <strong>{data.name}</strong>
                             <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />
                         </h4>
-                        <span className={cx('usename')}>anhanh</span>
+                        <span className={cx('usename')}>{data.name}</span>
                     </div>
                 </Link>
             </Tippy>

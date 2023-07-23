@@ -1,5 +1,10 @@
 .wrapper {
     border-top: 0.5px solid var(--blue);
+    height: 400px;
+}
+.list-account {
+    height: 100%;
+    overflow-y: scroll;
 }
 
 .label {

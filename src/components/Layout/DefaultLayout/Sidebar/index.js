@@ -32,7 +32,7 @@ function Sidebar() {
                     <Menuitem key={index} title={e.title} to={e.to} icon={e.icon} />
                 ))}
             </Menu>
-            <SuggestedAccounts label="Suggested Accounts" />
+            <SuggestedAccounts label="Suggested Artist" />
         </aside>
     );
 }

@@ -1,0 +1,19 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+
+    background-color: transparent;
+    color: var(--blue);
+}
+
+.icon-heart {
+    padding: 5px;
+    height: 25px;
+    width: 25px;
+    color: #2daaed85;
+}
+
+.blue {
+    color: var(--blue);
+    filter: drop-shadow(0 0 7px var(--blue));
+}
