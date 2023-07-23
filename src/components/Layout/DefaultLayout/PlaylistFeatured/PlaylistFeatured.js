@@ -52,7 +52,10 @@ function PlaylistFeatured() {
     // }, []);
     return (
         <div className={cx('wrapper')}>
-            {load && playlistResult?.playlists?.items?.map((data) => <PlayItem key={data.id} data={data} />)}
+            <h1>Featured playlists</h1>
+            <div className={cx('playlist')}>
+                {load && playlistResult?.playlists?.items?.map((data) => <PlayItem key={data.id} data={data} />)}
+            </div>
         </div>
     );
 }

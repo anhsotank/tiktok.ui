@@ -69,34 +69,22 @@ function Slide() {
         <div className={cx('wrapper')}>
             <Slider {...settings} className={cx('slick-slider')}>
                 <div className={cx('slick-slider_item')}>
+                    <img src="https://i.scdn.co/image/ab67706f000000038c85da51f91d85f7b7294ed5" alt="aa" />
+                </div>
+                <div className={cx('slick-slider_item')}>
                     <img
-                        src="https://avatar-ex-swe.nixcdn.com/slideshow/2023/06/08/1/4/4/3/1686204768880_org.jpg"
+                        src="https://avatar-ex-swe.nixcdn.com/slideshow/2023/07/23/b/1/4/4/1690107379297_org.jpg"
                         alt="aa"
                     />
                 </div>
                 <div className={cx('slick-slider_item')}>
-                    <img
-                        src="https://avatar-ex-swe.nixcdn.com/slideshow/2023/06/08/1/4/4/3/1686204768880_org.jpg"
-                        alt="aa"
-                    />
+                    <img src="https://i.scdn.co/image/ab67706f00000003163207c8107a08d4a480493e" alt="aa" />
                 </div>
                 <div className={cx('slick-slider_item')}>
-                    <img
-                        src="https://avatar-ex-swe.nixcdn.com/slideshow/2023/06/08/1/4/4/3/1686204768880_org.jpg"
-                        alt="aa"
-                    />
+                    <img src="https://i.scdn.co/image/ab67706f00000003c8f79895bd1b71300c1c79f4" alt="aa" />
                 </div>
                 <div className={cx('slick-slider_item')}>
-                    <img
-                        src="https://avatar-ex-swe.nixcdn.com/slideshow/2023/06/08/1/4/4/3/1686204768880_org.jpg"
-                        alt="aa"
-                    />
-                </div>
-                <div className={cx('slick-slider_item')}>
-                    <img
-                        src="https://avatar-ex-swe.nixcdn.com/slideshow/2023/06/08/1/4/4/3/1686204768880_org.jpg"
-                        alt="aa"
-                    />
+                    <img src="https://i.scdn.co/image/ab67706f00000003bbb60aa9fef94f2270a335fd" alt="aa" />
                 </div>
             </Slider>
         </div>

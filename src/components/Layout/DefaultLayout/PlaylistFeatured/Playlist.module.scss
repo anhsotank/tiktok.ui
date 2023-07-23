@@ -1,8 +1,16 @@
 .wrapper {
     width: 100%;
+}
+.playlist {
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-content: space-between;
+}
+h1 {
+    color: var(--blue);
+    font-weight: 700;
+    opacity: 0.7;
 }
 @media only screen and (max-width: 46.1875em) {
     // .wrapper {
