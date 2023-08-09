@@ -1,4 +1,13 @@
-import { SET_ARTIST_ID, SET_PLAYLIST_FEATURED, SET_PLAYLIST_ID, SET_TOKEN, SET_TRACK, SET_TRACKTOP } from './constants';
+import {
+    SET_ARTIST_ID,
+    SET_PLAYLIST_FEATURED,
+    SET_PLAYLIST_ID,
+    SET_PLAY_TRACK,
+    SET_SONG,
+    SET_TOKEN,
+    SET_TRACK,
+    SET_TRACKTOP,
+} from './constants';
 
 export const setartistID = (payload) => ({
     type: SET_ARTIST_ID,
@@ -22,5 +31,13 @@ export const setplaylistID = (payload) => ({
 });
 export const settrack = (payload) => ({
     type: SET_TRACK,
+    payload,
+});
+export const setplaytrack = (payload) => ({
+    type: SET_PLAY_TRACK,
+    payload,
+});
+export const setsong = (payload) => ({
+    type: SET_SONG,
     payload,
 });

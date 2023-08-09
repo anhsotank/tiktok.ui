@@ -5,7 +5,9 @@
     align-items: center;
     width: 400px;
     height: 600px;
-    background-color: #ffffffbb;
+    background-color: rgb(225, 225, 225, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     -webkit-box-shadow: 27px -3px 146px 21px #00afef6b;
     -moz-box-shadow: 27px -3px 146px 21px #00afef6b;
     box-shadow: 27px -3px 146px 21px #00afef6b;

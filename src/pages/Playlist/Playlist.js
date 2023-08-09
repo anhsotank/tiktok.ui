@@ -1,10 +1,10 @@
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCirclePlay, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCirclePlay } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './Playlist.module.scss';
-import { faHeart, faTimesCircle } from '@fortawesome/free-regular-svg-icons';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import SongPlaylist from './SongPlaylist';
 import { useStore } from '~/store/Provider';
 
@@ -48,7 +48,7 @@ function Playlist() {
     return (
         <div className={cx('wrapper')}>
             <header className={cx('background-header')}>
-                <img className={cx('background-header_image')} src={state?.playlistfeatured?.images[0].url} alt="" />
+                <img className={cx('background-header_image')} src={state?.playlistfeatured?.images[0]?.url} alt="" />
                 <div className={cx('title-header')}>
                     <span>Playlist</span>
                     <h1 className={cx('name-playlist')}>{state.playlistfeatured.name}</h1>
@@ -73,7 +73,7 @@ function Playlist() {
                 </div>
                 {console.log(Track)}
                 <ul className={cx('list-song')}>
-                    {load && Track.items?.map((data) => <SongPlaylist key={data.track.id} data={data} />)}
+                    {load && Track.items?.map((data) => <SongPlaylist key={data?.track?.id} data={data} />)}
                 </ul>
             </article>
         </div>

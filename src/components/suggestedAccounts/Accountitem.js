@@ -26,7 +26,7 @@ function Accountitem({ data }) {
                 )}
             >
                 <Link
-                    to="./artist"
+                    to={`/artist/${data.id}`}
                     className={cx('account-item')}
                     onClick={() => dispatch(actions.setartistID(data.id))}
                 >

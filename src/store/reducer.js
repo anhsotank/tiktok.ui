@@ -1,4 +1,13 @@
-import { SET_ARTIST_ID, SET_PLAYLIST_FEATURED, SET_PLAYLIST_ID, SET_TOKEN, SET_TRACK, SET_TRACKTOP } from './constants';
+import {
+    SET_ARTIST_ID,
+    SET_PLAYLIST_FEATURED,
+    SET_PLAYLIST_ID,
+    SET_PLAY_TRACK,
+    SET_SONG,
+    SET_TOKEN,
+    SET_TRACK,
+    SET_TRACKTOP,
+} from './constants';
 
 const initState = {
     token: '',
@@ -6,7 +15,9 @@ const initState = {
     playlistfeatured: [],
     TrackTop: [],
     Track: [],
+    Song: [],
     playlistID: '',
+    PlayTrack: '',
 };
 
 const reducer = (state, action) => {
@@ -29,6 +40,12 @@ const reducer = (state, action) => {
                 TrackTop: action.payload,
             };
         }
+        case SET_PLAY_TRACK: {
+            return {
+                ...state,
+                PlayTrack: action.payload,
+            };
+        }
         case SET_PLAYLIST_ID: {
             return {
                 ...state,
@@ -45,6 +62,12 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 Track: action.payload,
+            };
+        }
+        case SET_SONG: {
+            return {
+                ...state,
+                Song: action.payload,
             };
         }
 

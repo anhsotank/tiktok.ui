@@ -4,7 +4,8 @@ const routes = {
     update: '/update',
     login: '/login',
     live: '/live',
-    artist: '/artist',
+    artist: '/artist/:id',
     playlist: '/playlist',
+    song: '/song/:id',
 };
 export default routes;

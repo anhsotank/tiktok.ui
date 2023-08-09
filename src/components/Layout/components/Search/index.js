@@ -10,16 +10,14 @@ import styles from './Search.module.scss';
 import { useDebounce } from '~/hooks';
 import { useStore } from '~/store/Provider';
 import { actions } from '~/store';
+import Trackitem from '~/components/Trackitem';
 
 const cx = classNames.bind(styles);
 
-const CLIENT_ID = 'ebf6cc2e8a114f6894a08892ff5b1831';
-const CLIEN_SECRET = '54c38ed2c8114619b7b68f1fc18db003';
-
 function Search() {
     const [searchValue, setSearchValue] = useState('');
-    const [accessToken, setAccessToken] = useState('');
-    const [searchResult, setSearchResult] = useState([]);
+    const [searchResultTrack, setSearchResultTrack] = useState([]);
+    const [searchResultArtist, setSearchResultArtist] = useState([]);
     const [showResult, setShowResult] = useState(true);
     const [loading, setloading] = useState(false);
     const [state, dispatch] = useStore();
@@ -28,51 +26,25 @@ function Search() {
 
     const inputref = useRef();
 
-    useEffect(() => {
-        var authParameters = {
-            method: 'POST',
-            headers: {
-                'content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: 'grant_type=client_credentials&client_id=' + CLIENT_ID + '&client_secret=' + CLIEN_SECRET,
-        };
-        fetch('https://accounts.spotify.com/api/token', authParameters)
-            .then((re) => re.json())
-            .then((data) => {
-                setAccessToken(data.access_token);
-                dispatch(actions.setToken(data.access_token));
-                // console.log(data);
-            });
-    }, []);
-    async function search() {
+    async function search(type) {
         const artisParameter = {
             method: 'GET',
             headers: {
                 'content-Type': 'application/json',
-                Authorization: 'Bearer ' + accessToken,
+                Authorization: 'Bearer ' + state.token,
             },
         };
 
-        const artist = await fetch('https://api.spotify.com/v1/search?q=' + debounced + '&type=artist', artisParameter)
+        const artist = await fetch(
+            'https://api.spotify.com/v1/search?q=' + debounced + '&type=' + type + '&market=US&limit=3',
+            artisParameter,
+        )
             .then((reponse) => reponse.json())
             .then((data) => {
-                setSearchResult(data.artists.items);
-
+                type === 'artist' ? setSearchResultArtist(data.artists.items) : setSearchResultTrack(data.tracks.items);
                 setloading(false);
             })
             .catch(() => setloading(false));
-
-        // const playlist = await fetch(
-        //     'https://api.spotify.com/v1/artists/' +
-        //         searchResult[0]?.id +
-        //         '/top-tracks' +
-        //         '?include_group=top-tracks&market=US&limit=10',
-        //     artisParameter,
-        // )
-        //     .then((response) => response.json)
-        //     .then((data) => {
-        //         console.log(data);
-        //     });
     }
 
     useEffect(() => {
@@ -81,7 +53,8 @@ function Search() {
         }
 
         setloading(true);
-        search();
+        search('artist');
+        search('track');
 
         // fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
         //     .then((res) => res.json())
@@ -99,14 +72,19 @@ function Search() {
         //using a wrapper <div> or <span> tag around the reference element solves this by creating a new parentNode context. S
         <div>
             <HeadlessTippy
-                visible={showResult && searchResult.length > 0}
+                visible={showResult && (searchResultArtist.length > 0 || searchResultTrack.length > 0)}
                 interactive
                 render={(atb) => (
                     <div className={cx('search-result')} tabIndex="-1" {...atb}>
                         <PopperWrapper>
-                            <h3 className={cx('title-account')}></h3>
-                            {searchResult.map((result) => (
+                            <h3 className={cx('title-account')}>artist</h3>
+                            {searchResultArtist?.map((result) => (
                                 <Accountiem key={result.id} data={result} />
+                            ))}
+                            <h3 className={cx('title-account')}>track</h3>
+
+                            {searchResultTrack?.map((result) => (
+                                <Trackitem key={result.id} data={result} />
                             ))}
                         </PopperWrapper>
                     </div>
@@ -120,7 +98,7 @@ function Search() {
                         ref={inputref}
                         value={searchValue}
                         type="text"
-                        placeholder="Artist"
+                        placeholder="Artist,Track"
                         spellCheck="false"
                         onChange={(e) => {
                             setSearchValue(e.target.value);

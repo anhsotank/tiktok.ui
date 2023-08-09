@@ -7,6 +7,7 @@ import Login from '~/pages/Login';
 import Live from '~/pages/Live';
 import Artist from '~/pages/Artist';
 import Playlist from '~/pages/Playlist';
+import Song from '~/pages/Song';
 
 const publicroutes = [
     { path: config.routes.home, component: Home },
@@ -15,6 +16,7 @@ const publicroutes = [
     { path: config.routes.login, component: Login, layout: null },
     { path: config.routes.live, component: Live },
     { path: config.routes.artist, component: Artist, layout: HeaderSidebar },
+    { path: config.routes.song, component: Song, layout: HeaderSidebar },
     { path: config.routes.playlist, component: Playlist, layout: HeaderSidebar },
 ];
 const privateroutes = [];

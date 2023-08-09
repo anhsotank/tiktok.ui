@@ -13,6 +13,10 @@ function SuggestedAccounts({ label }) {
     const [Account, setAccount] = useState([]);
     const [load, setload] = useState(false);
     const [state, dispatch] = useStore();
+    const [isseeall, setisseeall] = useState(false);
+    const onSeeAllClick = () => {
+        setisseeall(!isseeall);
+    };
 
     useEffect(() => {
         async function getAccountData() {
@@ -39,14 +43,16 @@ function SuggestedAccounts({ label }) {
         getAccountData();
     }, []);
     return (
-        <div className={cx('wrapper')}>
+        <div className={cx('wrapper', isseeall ? 'see_all' : '')}>
             <p className={cx('label')}>{label}</p>
             <div className={cx('list-account')}>
                 {Account.artists?.map((data) => (
                     <Accountitem key={data.id} data={data} />
                 ))}
             </div>
-            <p className={cx('more-btn')}>see all</p>
+            <p className={cx('more-btn')} onClick={() => onSeeAllClick()}>
+                see all
+            </p>
         </div>
     );
 }

@@ -1,10 +1,14 @@
 .wrapper {
     border-top: 0.5px solid var(--blue);
-    height: 400px;
+    height: 312px;
 }
+.see_all {
+    height: 728px;
+}
+
 .list-account {
     height: 100%;
-    overflow-y: scroll;
+    overflow: hidden;
 }
 
 .label {
@@ -53,6 +57,7 @@
 }
 
 .more-btn {
+    cursor: pointer;
     padding: 8px;
     font-size: 1.4rem;
     font-weight: 700;

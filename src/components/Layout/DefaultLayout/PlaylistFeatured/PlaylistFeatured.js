@@ -36,20 +36,20 @@ function PlaylistFeatured() {
         getplaylist();
     }, [token]);
     // console.log(state.token);
-    // useEffect(() => {
-    //     const getPlaylistData = async () => {
-    //         const response = await axios.get('https://api.spotify.com/v1/me/playlists', {
-    //             headers: {
-    //                 Authorization: `Bearer ${state.token}`,
-    //                 'Content-Type': 'application/json',
-    //             },
-    //         });
-    //         console.log(response);
-    //         console.log(state.token);
-    //     };
+    useEffect(() => {
+        const getPlaylistData = async () => {
+            const response = await axios.get('https://api.spotify.com/v1/me/playlists', {
+                headers: {
+                    Authorization: `Bearer ${state.token}`,
+                    'Content-Type': 'application/json',
+                },
+            });
+            console.log(response);
+            console.log(state.token);
+        };
 
-    //     getPlaylistData();
-    // }, []);
+        getPlaylistData();
+    }, []);
     return (
         <div className={cx('wrapper')}>
             <h1>Featured playlists</h1>

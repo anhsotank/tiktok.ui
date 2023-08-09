@@ -1,5 +1,10 @@
 .search-result {
     width: 300px;
+    z-index: 100;
+    .title-account {
+        color: var(--blue);
+        border-bottom: 0.1px solid var(--blue);
+    }
 }
 .search {
     position: relative;
@@ -36,6 +41,7 @@
 input:not(:placeholder-shown) ~ .search-btn {
     color: rgba(22, 24, 35, 0.7);
 }
+
 .clear,
 .loading {
     position: absolute;

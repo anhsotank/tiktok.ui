@@ -58,21 +58,20 @@
     list-style: none;
     height: 300px;
     overflow-y: scroll;
+}
+.song {
+    margin-top: 13px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    &:hover {
+        background-color: #78badb9b;
+        cursor: pointer;
 
-    .song {
-        margin-top: 13px;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px;
-        &:hover {
-            background-color: #78badb9b;
-            cursor: pointer;
-
-            .icon {
-                display: block;
-            }
+        .icon {
+            display: block;
         }
     }
 }

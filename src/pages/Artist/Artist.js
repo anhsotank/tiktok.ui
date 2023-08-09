@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlay } from '@fortawesome/free-solid-svg-icons';
@@ -18,7 +19,8 @@ function Artist() {
     const [load, setload] = useState(false);
     const [state, dispatch] = useStore();
 
-    const artisID = state.artistID;
+    const { id } = useParams();
+    // const artisID = state.artistID;
     useEffect(() => {
         async function getTop_TrackData() {
             const artisParameter = {
@@ -29,7 +31,7 @@ function Artist() {
                 },
             };
             const artist = await fetch(
-                `https://api.spotify.com/v1/artists/${state.artistID}/top-tracks?include_group=top-tracks&market=US&limit=10`,
+                `https://api.spotify.com/v1/artists/${id}/top-tracks?include_group=top-tracks&market=US&limit=15`,
                 artisParameter,
             )
                 .then((reponse) => reponse.json())
@@ -41,10 +43,30 @@ function Artist() {
                 .catch((err) => console.log('err'));
         }
 
-        {
-            state.artistID && getTop_TrackData();
-        }
-    }, [artisID]);
+        getTop_TrackData();
+    }, [id]);
+
+    // useEffect(() => {
+    //     async function getplay() {
+    //         const artisParameter = {
+    //             method: 'PUT',
+    //             headers: {
+    //                 Authorization: `Bearer ${state.token}`,
+    //             },
+    //             body: JSON.stringify({
+    //                 uris: [state.PlayTrack],
+    //             }),
+    //         };
+    //         const artist = await fetch(`https://api.spotify.com/v1/me/player/play`, artisParameter)
+    //             .then((reponse) => reponse.json())
+    //             .then((data) => {
+    //                 console.log(data);
+    //             })
+    //             .catch((err) => console.log('err'));
+    //     }
+
+    //     getplay();
+    // }, [artisID]);
 
     console.log(TrackTop);
     return (
@@ -56,7 +78,7 @@ function Artist() {
                     <Button outline>follow</Button>
                 </div>
                 <ul className={cx('list-song')}>
-                    {TrackTop.tracks?.map((result) => (
+                    {TrackTop?.tracks?.map((result) => (
                         <SongItem key={result.id} data={result} />
                     ))}
                 </ul>
