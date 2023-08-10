@@ -1,6 +1,6 @@
 .wrapper {
     width: 100%;
-    height: 1000px;
+    height: 600px;
 }
 
 .background-header {
@@ -35,6 +35,9 @@
 }
 .wrapper-playlist {
     margin-top: 10px;
+    background-color: rgb(225, 225, 225, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 .header-playlist {
     display: flex;
@@ -57,7 +60,6 @@
 .list-song {
     list-style: none;
     height: 300px;
-    overflow-y: scroll;
 }
 .song {
     margin-top: 13px;
@@ -81,6 +83,8 @@
     align-items: center;
     justify-content: space-between;
     width: 200px;
+    height: 50px;
+    overflow: hidden;
     .song-img {
         height: 40px;
         width: 40px;

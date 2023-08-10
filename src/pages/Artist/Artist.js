@@ -11,15 +11,17 @@ import { useStore } from '~/store/Provider';
 import SongItem from './SongItem';
 import { actions } from '~/store';
 import HeaderArtist from './HeaderArtist';
+import { useColor } from '~/hooks';
 
 const cx = classNames.bind(styles);
 
 function Artist() {
+    const { id } = useParams();
     const [TrackTop, setTopTrack] = useState([]);
     const [load, setload] = useState(false);
     const [state, dispatch] = useStore();
+    const color = useColor(id);
 
-    const { id } = useParams();
     // const artisID = state.artistID;
     useEffect(() => {
         async function getTop_TrackData() {
@@ -70,12 +72,15 @@ function Artist() {
 
     console.log(TrackTop);
     return (
-        <div className={cx('wrapper')}>
+        <div
+            className={cx('wrapper')}
+            style={{ backgroundImage: `linear-gradient(to top, transparent, ${color} 650px)` }}
+        >
             {load && <HeaderArtist data={TrackTop}></HeaderArtist>}
             <article className={cx('wrapper-playlist')}>
                 <div className={cx('header-playlist')}>
                     <FontAwesomeIcon className={cx('header-playlist-icon')} icon={faCirclePlay} />
-                    <Button outline>follow</Button>
+                    <Button blue>follow</Button>
                 </div>
                 <ul className={cx('list-song')}>
                     {TrackTop?.tracks?.map((result) => (

@@ -17,7 +17,7 @@ const publicroutes = [
     { path: config.routes.live, component: Live },
     { path: config.routes.artist, component: Artist, layout: HeaderSidebar },
     { path: config.routes.song, component: Song, layout: HeaderSidebar },
-    { path: config.routes.playlist, component: Playlist, layout: HeaderSidebar },
+    { path: config.routes.playlist, component: Playlist, layout: HeaderOnly },
 ];
 const privateroutes = [];
 export { publicroutes, privateroutes };

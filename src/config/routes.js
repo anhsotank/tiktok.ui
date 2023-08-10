@@ -5,7 +5,7 @@ const routes = {
     login: '/login',
     live: '/live',
     artist: '/artist/:id',
-    playlist: '/playlist',
+    playlist: '/playlist/:id',
     song: '/song/:id',
 };
 export default routes;

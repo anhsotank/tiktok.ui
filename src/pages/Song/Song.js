@@ -13,7 +13,7 @@ function Song() {
     const [state, dispatch] = useStore();
 
     const { id } = useParams();
-    console.log(state.Song);
+
     const data = state.Song;
     const duration = (ms) => {
         const minutes = Math.floor(ms / 60000);

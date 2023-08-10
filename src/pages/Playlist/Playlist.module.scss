@@ -9,7 +9,6 @@
 
 .background-header {
     position: relative;
-    background-image: linear-gradient(to top, transparent, #046088 50px);
     color: #ffffff;
     display: flex;
     align-items: flex-start;
@@ -39,6 +38,7 @@
     font-size: 1.5rem;
     .name-playlist {
         font-size: 5rem;
+        color: #ffffff;
         font-weight: 800;
         padding: 10px 10px 10px 0;
     }
@@ -158,7 +158,7 @@
 }
 
 .song-action {
-    margin-left: 140px;
+    margin-left: 130px;
     width: 100%;
 
     .icon-heart {

@@ -11,7 +11,7 @@ import { actions } from '~/store';
 const cx = classNames.bind(styles);
 function SongItem({ data }) {
     const [state, dispatch] = useStore();
-    console.log(state);
+
     const [play, setplay] = useState(false);
     const playload = () => {
         setplay(true);
