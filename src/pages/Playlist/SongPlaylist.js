@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 import styles from './Playlist.module.scss';
 import Heart from '~/components/Heart';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -33,7 +34,7 @@ function SongPlaylist({ data }) {
                     )}
                 </div>
                 <img className={cx('song-img')} src={data?.track?.album?.images[2]?.url} alt="" />
-                <span>{data?.track?.name}</span>
+                <Link to={`/song/${data?.track?.id}`}>{data?.track?.name}</Link>
             </div>
             <span className={cx('song-duration')}>{duration(data?.track?.duration_ms)}</span>
             <span className={cx('song-date')}>{data?.track?.album?.release_date}</span>

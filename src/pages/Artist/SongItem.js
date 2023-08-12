@@ -7,6 +7,7 @@ import { useState } from 'react';
 import Heart from '~/components/Heart/Heart';
 import { useStore } from '~/store/Provider';
 import { actions } from '~/store';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 function SongItem({ data }) {
@@ -37,7 +38,7 @@ function SongItem({ data }) {
                 </div>
 
                 <img className={cx('song-img')} src={data?.album?.images[0]?.url} alt="" />
-                <span>{data?.name}</span>
+                <Link to={`/song/${data.id}`}>{data?.name}</Link>
             </div>
             <span className={cx('song-duration')}>{duration(data?.duration_ms)}</span>
             <div className="song-action">

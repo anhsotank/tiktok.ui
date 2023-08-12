@@ -14,7 +14,11 @@ function PlayItem({ data }) {
     const [state, dispatch] = useStore();
 
     return (
-        <Link to={`/playlist/${data.id}`} className={cx('wrapper')} onClick={() => {}}>
+        <Link
+            to={`/playlist/${data.id}`}
+            className={cx('wrapper')}
+            onClick={() => dispatch(actions.setplaylistID(data.id))}
+        >
             <div className={cx('cover-image')}>
                 <img className={cx('image')} src={data.images[0].url} alt="" />
             </div>

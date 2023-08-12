@@ -12,7 +12,7 @@ function Trackitem({ data }) {
     const [state, dispatch] = useStore();
 
     return (
-        <Link to={`/song/${data.name}`} className={cx('wrapper')} onClick={() => dispatch(actions.setsong(data))}>
+        <Link to={`/song/${data.id}`} className={cx('wrapper')} onClick={() => dispatch(actions.setsong(data))}>
             <img className={cx('avata')} src={data?.album?.images[0]?.url} alt={data?.album?.images[0]?.url} />
 
             <div className={cx('info')}>

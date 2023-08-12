@@ -9,7 +9,6 @@
 
 .background-header {
     position: relative;
-    background-image: linear-gradient(to top, transparent, #046088 50px);
     color: #ffffff;
     display: flex;
     align-items: flex-start;
@@ -38,6 +37,7 @@
     height: 180px;
     font-size: 1.5rem;
     .name-song {
+        color: #ffffff;
         height: 150px;
         font-size: 4rem;
         font-weight: 800;
