@@ -27,6 +27,10 @@
 
 .usename {
     font-size: 1.2rem;
+    &:hover {
+        color: var(--blue);
+        text-decoration: underline;
+    }
 }
 .name {
     font-size: 1.8rem;

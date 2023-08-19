@@ -25,7 +25,7 @@ function DefaultLayout({ children }) {
                 </div>
             </div>
 
-            <SpotifyPlayer
+            {/* <SpotifyPlayer
                 styles={{
                     activeColor: '#fff',
                     bgColor: '#181818',
@@ -46,7 +46,7 @@ function DefaultLayout({ children }) {
                 //   }}
                 play={true}
                 uris={trackUri ? [trackUri] : []}
-            />
+            /> */}
         </div>
     );
 }

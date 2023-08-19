@@ -41,7 +41,7 @@ function SuggestedAccounts({ label }) {
         }
 
         getAccountData();
-    }, []);
+    }, [state.artistID]);
     return (
         <div className={cx('wrapper', isseeall ? 'see_all' : '')}>
             <p className={cx('label')}>{label}</p>

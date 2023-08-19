@@ -5,6 +5,7 @@ import styles from './AccountPreview.module.scss';
 
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import Button from '~/components/Button';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 function AccountPreview({ data }) {
@@ -20,7 +21,9 @@ function AccountPreview({ data }) {
                         <strong>{data?.name}</strong>
                         <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />
                     </h4>
-                    <span className={cx('usename')}>{data?.name}</span>
+                    <Link to={`/artist/${data.id}`} className={cx('usename')}>
+                        {data?.name}
+                    </Link>
                 </div>
                 <p className="analytics">
                     <span className={cx('value')}>

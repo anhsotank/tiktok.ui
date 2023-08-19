@@ -38,7 +38,9 @@ function SongItem({ data }) {
                 </div>
 
                 <img className={cx('song-img')} src={data?.album?.images[0]?.url} alt="" />
-                <Link to={`/song/${data.id}`}>{data?.name}</Link>
+                <Link to={`/song/${data.id}`} className={cx('name-song')}>
+                    {data?.name}
+                </Link>
             </div>
             <span className={cx('song-duration')}>{duration(data?.duration_ms)}</span>
             <div className="song-action">

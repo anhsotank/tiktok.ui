@@ -34,7 +34,9 @@ function SongPlaylist({ data }) {
                     )}
                 </div>
                 <img className={cx('song-img')} src={data?.track?.album?.images[2]?.url} alt="" />
-                <Link to={`/song/${data?.track?.id}`}>{data?.track?.name}</Link>
+                <Link to={`/song/${data?.track?.id}`} className={cx('name-song')}>
+                    {data?.track?.name}
+                </Link>
             </div>
             <span className={cx('song-duration')}>{duration(data?.track?.duration_ms)}</span>
             <span className={cx('song-date')}>{data?.track?.album?.release_date}</span>

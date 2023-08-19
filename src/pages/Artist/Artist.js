@@ -12,12 +12,15 @@ import SongItem from './SongItem';
 import { actions } from '~/store';
 import HeaderArtist from './HeaderArtist';
 import { useColor } from '~/hooks';
+import Albums from './Album/Album';
 
 const cx = classNames.bind(styles);
 
 function Artist() {
     const { id } = useParams();
     const [TrackTop, setTopTrack] = useState([]);
+    const [artist, setArtist] = useState([]);
+    const [albums, setAlbums] = useState([]);
     const [load, setload] = useState(false);
     const [state, dispatch] = useStore();
     const color = useColor(id);
@@ -32,7 +35,22 @@ function Artist() {
                     Authorization: `Bearer ${state.token}`,
                 },
             };
-            const artist = await fetch(
+            const artist = await fetch(`https://api.spotify.com/v1/artists/${id}`, artisParameter)
+                .then((reponse) => reponse.json())
+                .then((data) => {
+                    setArtist(data);
+                })
+                .catch((err) => console.log('err'));
+            const albums = await fetch(
+                `https://api.spotify.com/v1/artists/${id}/albums?include_group=album&market=US&limit=15`,
+                artisParameter,
+            )
+                .then((reponse) => reponse.json())
+                .then((data) => {
+                    setAlbums(data);
+                })
+                .catch((err) => console.log('err'));
+            const artistTop_tracks = await fetch(
                 `https://api.spotify.com/v1/artists/${id}/top-tracks?include_group=top-tracks&market=US&limit=15`,
                 artisParameter,
             )
@@ -70,13 +88,17 @@ function Artist() {
     //     getplay();
     // }, [artisID]);
 
-    console.log(TrackTop);
+    console.log(albums);
     return (
-        <div
-            className={cx('wrapper')}
-            style={{ backgroundImage: `linear-gradient(to top, transparent, ${color} 650px)` }}
-        >
-            {load && <HeaderArtist data={TrackTop}></HeaderArtist>}
+        <div className={cx('wrapper')}>
+            {load && (
+                <div
+                    className={cx('background-header')}
+                    style={{ backgroundImage: `linear-gradient(to top, transparent, ${color} 650px)` }}
+                >
+                    <HeaderArtist data={artist}></HeaderArtist>
+                </div>
+            )}
             <article className={cx('wrapper-playlist')}>
                 <div className={cx('header-playlist')}>
                     <FontAwesomeIcon className={cx('header-playlist-icon')} icon={faCirclePlay} />
@@ -88,6 +110,7 @@ function Artist() {
                     ))}
                 </ul>
             </article>
+            <Albums data={albums} />
         </div>
     );
 }

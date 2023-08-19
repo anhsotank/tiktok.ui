@@ -1,12 +1,13 @@
 .table {
+    background-color: rgba(225, 225, 225, 0.129);
+    backdrop-filter: blur(15px) !important;
     display: flex;
     margin: 0 auto;
     justify-content: center;
     align-items: center;
     width: 400px;
     height: 600px;
-    background-color: rgb(225, 225, 225, 0.1);
-    backdrop-filter: blur(10px);
+
     -webkit-backdrop-filter: blur(10px);
     -webkit-box-shadow: 27px -3px 146px 21px #00afef6b;
     -moz-box-shadow: 27px -3px 146px 21px #00afef6b;
@@ -17,15 +18,16 @@
         height: 100%;
         width: 100%;
         outline: none;
-        border: 2px solid var(--blue);
+        border-bottom: 2px solid var(--blue);
 
         &:focus {
-            border: 3px solid #00afef;
-            box-shadow: var(--blue) -3px 3px 15px;
+            border-bottom: 3px solid #00afef;
+            box-shadow: var(--blue) 0 6px 15px;
         }
     }
 }
 .login {
+    outline: none;
     font-size: 35px;
     font-weight: 900;
     color: white;
@@ -62,21 +64,22 @@
 }
 label {
     display: inline;
-    font-size: 15px;
+    font-size: 1̀rem;
     color: var(--blue);
     position: absolute;
     font-weight: 400;
     pointer-events: none;
     left: 5px;
-    top: 13px;
+    top: 20px;
 }
 
 .table input:focus + label,
 .table input:valid + label {
-    font-size: 18px;
-    font-weight: 500;
+    font-size: 2rem;
+    font-weight: 600;
+    text-shadow: 0 0 4px var(-blue);
     top: -14px;
-    background-color: #ffffff;
+    display: inline-flex;
     left: 10px;
     color: var(--blue);
 }
